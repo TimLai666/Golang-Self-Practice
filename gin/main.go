@@ -1,7 +1,7 @@
 package main
 
 import (
-	"golang/gin/app"
+	app "gin/app"
 
 	"github.com/gin-gonic/gin"
 ) // "github.com/gin-contrib/cors"
