@@ -9,6 +9,12 @@ func main() {
 			"message": "pong",
 		})
 	})
+	router.POST("/post/:id", func(c *gin.Context) {
+		id := c.Param("id")
+		c.JSON(200, gin.H{
+			"message": id,
+		})
+	})
 
 	router.Run(":8000")
 }
