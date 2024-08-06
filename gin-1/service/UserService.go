@@ -3,6 +3,7 @@ package service
 import (
 	"gin-1/pojo"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -24,4 +25,17 @@ func PostUser(c *gin.Context) {
 	}
 	userList = append(userList, user)
 	c.JSON(http.StatusOK, "User Added")
+}
+
+// DELETE User
+func DeleteUser(c *gin.Context) {
+	id, _ := strconv.Atoi(c.Param("id"))
+	for _, user := range userList {
+
+		userList = append(userList[:id], userList[id+1:]...)
+		c.JSON(http.StatusOK, "User Deleted")
+		return
+
+	}
+	c.JSON(http.StatusNotFound, "User Not Found")
 }
