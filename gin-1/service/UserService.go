@@ -31,11 +31,11 @@ func PostUser(c *gin.Context) {
 func DeleteUser(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	for _, user := range userList {
-
-		userList = append(userList[:id], userList[id+1:]...)
-		c.JSON(http.StatusOK, "User Deleted")
-		return
-
+		if user.Id == id {
+			userList = append(userList[:id], userList[id+1:]...)
+			c.JSON(http.StatusOK, "User Deleted")
+			return
+		}
 	}
 	c.JSON(http.StatusNotFound, "User Not Found")
 }
