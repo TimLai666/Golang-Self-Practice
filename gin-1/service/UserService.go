@@ -39,3 +39,22 @@ func DeleteUser(c *gin.Context) {
 	}
 	c.JSON(http.StatusNotFound, "User Not Found")
 }
+
+// PUT User
+func PutUser(c *gin.Context) {
+	beforeUser := pojo.User{}
+	err := c.BindJSON(&beforeUser)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	userId, _ := strconv.Atoi(c.Param("id"))
+	for i, user := range userList {
+		if user.Id == userId {
+			userList[i] = beforeUser
+			c.JSON(http.StatusOK, "User Updated")
+			return
+		}
+	}
+	c.JSON(http.StatusNotFound, "User Not Found")
+}
