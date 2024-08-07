@@ -15,7 +15,7 @@ func FindAllUsers() []User {
 	return users
 }
 
-func FindUserById(id int) User {
+func FindUserById(id string) User {
 	var user User
 	database.DBconnect.Where("id = ?", id).First(&user)
 	return user

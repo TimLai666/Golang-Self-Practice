@@ -2,6 +2,7 @@ package service
 
 import (
 	"gin-1/pojo"
+	"log"
 	"net/http"
 	"strconv"
 
@@ -12,7 +13,20 @@ var userList []pojo.User
 
 // GET User
 func FindAllUsers(c *gin.Context) {
-	c.JSON(http.StatusOK, userList)
+	// c.JSON(http.StatusOK, userList)
+	users := pojo.FindAllUsers()
+	c.JSON(http.StatusOK, users)
+}
+
+// GET User by ID
+func FindUserById(c *gin.Context) {
+	user := pojo.FindUserById(c.Param("id"))
+	if user.Id == 0 {
+		c.JSON(http.StatusNotFound, "User Not Found")
+		return
+	}
+	log.Println(user)
+	c.JSON(http.StatusOK, user)
 }
 
 // POST User
