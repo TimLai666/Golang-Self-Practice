@@ -3,7 +3,7 @@ package main
 import "net/http"
 
 func SayHello(w http.ResponseWriter, req *http.Request) {
-	w.Write([]byte("Hello, World!"))
+	w.Write([]byte("Hello!"))
 }
 
 func main() {
