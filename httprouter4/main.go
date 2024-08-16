@@ -8,7 +8,7 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
-func Index(w http.ResponseWriter, r *http.Request) {
+func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	panic("error")
 }
 
