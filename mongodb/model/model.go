@@ -12,3 +12,7 @@ type LogRecord struct {
 	Content string `bson:"content"`
 	Tp      ExecTime
 }
+
+type FindByJobName struct {
+	JobName string `bson:"jobName"`
+}
